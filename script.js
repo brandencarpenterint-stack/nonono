@@ -41,4 +41,23 @@ document.addEventListener('DOMContentLoaded', () => {
         glitchElement.appendChild(span1);
         glitchElement.appendChild(span2);
     }
+
+    // Copy Contract Address Logic
+    const copyBtn = document.getElementById('copy-btn');
+    const caText = document.getElementById('ca-text');
+    const copyMsg = document.getElementById('copy-msg');
+
+    if (copyBtn && caText) {
+        copyBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(caText.textContent);
+                copyMsg.classList.add('show');
+                setTimeout(() => {
+                    copyMsg.classList.remove('show');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+            }
+        });
+    }
 });
