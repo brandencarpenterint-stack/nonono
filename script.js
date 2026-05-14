@@ -60,4 +60,44 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Falling Emojis Chaos Logic
+    const emojis = ['📉', '🔥', '💸', '🚨', '💀'];
+    const emojiContainer = document.createElement('div');
+    emojiContainer.style.position = 'fixed';
+    emojiContainer.style.top = '0';
+    emojiContainer.style.left = '0';
+    emojiContainer.style.width = '100vw';
+    emojiContainer.style.height = '100vh';
+    emojiContainer.style.pointerEvents = 'none';
+    emojiContainer.style.zIndex = '0';
+    emojiContainer.style.overflow = 'hidden';
+    document.body.appendChild(emojiContainer);
+
+    function createFallingEmoji() {
+        const emoji = document.createElement('div');
+        emoji.classList.add('falling-emoji');
+        emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        
+        // Randomize start position, size, and animation duration
+        const leftPos = Math.random() * 100;
+        const animDuration = Math.random() * 6 + 4; // 4s to 10s
+        const size = Math.random() * 1.5 + 1; // 1rem to 2.5rem
+        const opacity = Math.random() * 0.3 + 0.1; // 0.1 to 0.4
+
+        emoji.style.left = `${leftPos}vw`;
+        emoji.style.animationDuration = `${animDuration}s`;
+        emoji.style.fontSize = `${size}rem`;
+        emoji.style.opacity = opacity;
+
+        emojiContainer.appendChild(emoji);
+
+        // Remove element after it falls
+        setTimeout(() => {
+            emoji.remove();
+        }, animDuration * 1000);
+    }
+
+    // Create an emoji every 300ms
+    setInterval(createFallingEmoji, 300);
 });
