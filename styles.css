@@ -699,6 +699,20 @@ footer p {
         width: 300px;
         height: 300px;
     }
+    
+    .merch-container {
+        flex-direction: column;
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    .merch-details {
+        text-align: center;
+    }
+
+    .price-container {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 600px) {
