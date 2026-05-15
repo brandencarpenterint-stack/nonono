@@ -575,7 +575,16 @@ footer p {
     position: relative;
     flex: 1;
     min-width: 300px;
-    max-width: 400px;
+    max-width: 500px;
+}
+
+.dual-images {
+    display: flex;
+    gap: 1rem;
+}
+
+.dual-images .merch-img {
+    width: calc(50% - 0.5rem);
 }
 
 .merch-img {
